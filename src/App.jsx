@@ -1,7 +1,9 @@
 import { useState } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route, useNavigate, Link } from 'react-router-dom'
 import './App.css'
 import Login from './pages/Login.jsx'
+import Signup from './pages/Signup.jsx'
+import ForgotPassword from './pages/ForgotPassword.jsx'
 
 // eslint-disable-next-line react-refresh/only-export-components
 function MainPage() {
@@ -14,10 +16,10 @@ function MainPage() {
       {/* ─── 네비게이션 ─── */}
       <nav className="navbar">
         <div className="nav-inner">
-          <div className="logo">
+          <Link to="/" className="logo">
             <span className="logo-sg">SG</span>
             <span className="logo-chem">Chem</span>
-          </div>
+          </Link>
           <div className="nav-links">
             <a href="#features">서비스 특징</a>
             <a href="#how">이용 흐름</a>
@@ -25,7 +27,8 @@ function MainPage() {
             <a href="#reviews">후기</a>
           </div>
           <div className="nav-btns">
-            <button className="btn-primary" onClick={() => navigate('/login')}>로그인</button>
+            <button className="btn-ghost" onClick={() => navigate('/login')}>로그인</button>
+            <button className="btn-primary" onClick={() => navigate('/signup')}>회원가입</button>
           </div>
           <button
             className={`hamburger ${menuOpen ? 'open' : ''}`}
@@ -42,7 +45,8 @@ function MainPage() {
           <a href="#ai" onClick={() => setMenuOpen(false)}>AI 분석</a>
           <a href="#reviews" onClick={() => setMenuOpen(false)}>후기</a>
           <div className="mobile-menu-btns">
-            <button className="btn-primary w-full" onClick={() => { navigate('/login'); setMenuOpen(false) }}>로그인</button>
+            <button className="btn-ghost-dark w-full" onClick={() => { navigate('/login'); setMenuOpen(false) }}>로그인</button>
+            <button className="btn-primary w-full" onClick={() => { navigate('/signup'); setMenuOpen(false) }}>회원가입</button>
           </div>
         </div>
       </nav>
@@ -66,7 +70,7 @@ function MainPage() {
             </p>
             <div className="hero-actions">
               <button className="btn-white btn-lg">AI 인터뷰 시작하기</button>
-              <button className="btn-outline btn-lg">서비스 소개</button>
+              <a href="#problem" className="btn-outline btn-lg">서비스 소개</a>
             </div>
           </div>
 
@@ -117,7 +121,7 @@ function MainPage() {
       </section>
 
       {/* ─── 문제 정의 ─── */}
-      <section className="problem">
+      <section className="problem" id="problem">
         <div className="section-inner">
           <div className="section-head">
             <span className="section-badge">기존 소개팅의 문제</span>
@@ -333,10 +337,10 @@ function MainPage() {
       <footer className="footer">
         <div className="footer-inner">
           <div className="footer-logo">
-            <div className="logo">
+            <Link to="/" className="logo">
               <span className="logo-sg">SG</span>
               <span className="logo-chem">Chem</span>
-            </div>
+            </Link>
             <p>대화 기반 AI 소개팅 플랫폼</p>
           </div>
           <div className="footer-cols">
@@ -374,6 +378,8 @@ function App() {
     <Routes>
       <Route path="/" element={<MainPage />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
     </Routes>
   )
 }

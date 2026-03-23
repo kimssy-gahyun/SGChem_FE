@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import './Login.css'
 
-function Login() {
+function Signup() {
   const navigate = useNavigate()
-  const [form, setForm] = useState({ email: '', password: '' })
+  const [form, setForm] = useState({ name: '', email: '', password: '', passwordConfirm: '' })
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -12,8 +12,8 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // TODO: 실제 로그인 API 연결
-    console.log('로그인 시도:', form)
+    // TODO: 실제 회원가입 API 연결
+    console.log('회원가입 시도:', form)
   }
 
   return (
@@ -22,16 +22,26 @@ function Login() {
       <div className="login-bg-blob blob2" />
 
       <div className="login-card">
-        {/* 로고 */}
         <Link to="/" className="login-logo">
           <span className="logo-sg">SG</span>
           <span className="logo-chem">Chem</span>
         </Link>
 
-        <h1 className="login-title">다시 만나서 반가워요 👋</h1>
-        <p className="login-sub">로그인하고 나의 케미를 찾아보세요</p>
+        <h1 className="login-title">처음 만나서 반가워요 👋</h1>
+        <p className="login-sub">가입하고 나의 케미를 찾아보세요</p>
 
         <form className="login-form" onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label>이름</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="이름을 입력해주세요"
+              value={form.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
           <div className="input-group">
             <label>이메일</label>
             <input
@@ -54,16 +64,19 @@ function Login() {
               required
             />
           </div>
-
-          <div className="login-options">
-            <label className="remember">
-              <input type="checkbox" />
-              <span>자동 로그인</span>
-            </label>
-            <Link to="/forgot-password" className="forgot">비밀번호 찾기</Link>
+          <div className="input-group">
+            <label>비밀번호 확인</label>
+            <input
+              type="password"
+              name="passwordConfirm"
+              placeholder="비밀번호를 다시 입력해주세요"
+              value={form.passwordConfirm}
+              onChange={handleChange}
+              required
+            />
           </div>
 
-          <button type="submit" className="login-btn">로그인</button>
+          <button type="submit" className="login-btn">회원가입</button>
         </form>
 
         <div className="divider"><span>또는</span></div>
@@ -78,12 +91,12 @@ function Login() {
         </div>
 
         <p className="signup-link">
-          아직 계정이 없으신가요?{' '}
-          <Link to="/signup">회원가입</Link>
+          이미 계정이 있으신가요?{' '}
+          <Link to="/login">로그인</Link>
         </p>
       </div>
     </div>
   )
 }
 
-export default Login
+export default Signup

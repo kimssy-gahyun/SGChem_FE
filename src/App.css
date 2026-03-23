@@ -92,6 +92,10 @@ body {
   cursor: pointer;
   transition: background .2s;
   -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .btn-outline:active { background: rgba(255,255,255,0.15); }
 
@@ -127,6 +131,8 @@ body {
   letter-spacing: -0.5px;
   flex-shrink: 0;
   line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
 }
 .logo-sg   { color: #F6C1CC; }
 .logo-chem { color: #CDB4F6; }
