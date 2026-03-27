@@ -4,6 +4,9 @@ import './App.css'
 import Login from './pages/Login.jsx'
 import Signup from './pages/Signup.jsx'
 import ForgotPassword from './pages/ForgotPassword.jsx'
+import Interview from './pages/Interview.jsx'
+import MatchProfiles from './pages/MatchProfiles.jsx'
+import Chat from './pages/Chat.jsx'
 
 // eslint-disable-next-line react-refresh/only-export-components
 function MainPage() {
@@ -69,7 +72,7 @@ function MainPage() {
               진짜 케미가 맞는 상대를 찾아드립니다.
             </p>
             <div className="hero-actions">
-              <button className="btn-white btn-lg">AI 인터뷰 시작하기</button>
+              <button className="btn-white btn-lg" onClick={() => navigate('/interview')}>AI 인터뷰 시작하기</button>
               <a href="#problem" className="btn-outline btn-lg">서비스 소개</a>
             </div>
           </div>
@@ -329,7 +332,7 @@ function MainPage() {
         <div className="cta-inner">
           <h2>AI와 대화를 시작하고<br /><span className="highlight-white">나의 케미를 찾아보세요</span></h2>
           <p>프로필 사진 없이, 대화만으로 연결되는 소개팅.</p>
-          <button className="btn-white btn-xl">AI 인터뷰 무료 시작 →</button>
+          <button className="btn-white btn-xl" onClick={() => navigate('/interview')}>AI 인터뷰 무료 시작 →</button>
         </div>
       </section>
 
@@ -380,6 +383,9 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/interview" element={<Interview />} />
+      <Route path="/match-profiles" element={<MatchProfiles />} />
+      <Route path="/chat" element={<Chat />} />
     </Routes>
   )
 }
