@@ -95,15 +95,15 @@ E --> F[매칭 추천]
 
 ### Backend
 
-* Node.js / Python (예정)
+* Python (예정)
 
 ### AI
 
-* OpenAI / Claude API
+* OpenAI / Claude API (예정)
 
 ### Database
 
-* 사용자 프로필 & 성향 데이터 저장
+* SQLite (예정)
 
 ---
 
@@ -112,9 +112,9 @@ E --> F[매칭 추천]
 | 영역       | 기술               |
 | -------- | ---------------- |
 | Frontend | React, Vite      |
-| Backend  | Node.js / Python |
+| Backend  | Python           |
 | AI       | OpenAI, Claude   |
-| DB       | TBD              |
+| DB       | SQLite           |
 
 ---
 
@@ -129,11 +129,11 @@ E --> F[매칭 추천]
 
 * 기술 스택 확정
 * 프로젝트 계획서 작성
+* UI/UX 설계
+* 프론트엔드 구현
 
 ### 🚀 예정
 
-* UI/UX 설계
-* 프론트엔드 구현
 * AI 기능 연동
 
 ---
@@ -154,12 +154,6 @@ E --> F[매칭 추천]
 
 ---
 
-## 🧑‍💻 팀 프로젝트
-
-> 대학원 팀 프로젝트로 진행 중
-
----
-
 ## 📂 프로젝트 구조 (예정)
 
 ```bash
@@ -169,18 +163,6 @@ src/
  ├── hooks/
  ├── services/
  └── utils/
-```
-
----
-
-## 🚀 실행 방법
-
-```bash
-# 설치
-npm install
-
-# 실행
-npm run dev
 ```
 
 ---
