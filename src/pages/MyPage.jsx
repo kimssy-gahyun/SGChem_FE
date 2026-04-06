@@ -79,6 +79,7 @@ export default function MyPage() {
 
         {/* 액션 버튼 */}
         <div className="mypage-actions">
+          <Link to="/match-profiles" className="btn-match btn-lg">💑 내 매칭 상대 보기</Link>
           <Link to="/interview" className="btn-primary btn-lg">AI 인터뷰 다시하기</Link>
           <Link to="/" className="btn-ghost-outline btn-lg">홈으로</Link>
         </div>

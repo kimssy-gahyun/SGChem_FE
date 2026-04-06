@@ -150,6 +150,29 @@
   flex-wrap: wrap;
 }
 
+.btn-match {
+  background: linear-gradient(135deg, #ec4899, #a855f7);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(168, 85, 247, 0.35);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn-match:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.45);
+}
+
 .btn-ghost-outline {
   background: transparent;
   border: 1.5px solid #d8b4fe;
