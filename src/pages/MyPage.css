@@ -150,6 +150,25 @@
   flex-wrap: wrap;
 }
 
+@media (max-width: 480px) {
+  .mypage-actions {
+    flex-direction: column;
+  }
+
+  .mypage-actions .btn-match,
+  .mypage-actions .btn-primary,
+  .mypage-actions .btn-ghost-outline {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px 22px;
+    line-height: 1.4;
+    box-sizing: border-box;
+  }
+}
+
 .btn-match {
   background: linear-gradient(135deg, #ec4899, #a855f7);
   color: #fff;
