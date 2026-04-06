@@ -98,7 +98,7 @@
   box-shadow: 0 10px 32px rgba(155, 100, 180, 0.16);
 }
 .mp-card:hover .mp-reason-overlay {
-  transform: translateY(-11px);
+  transform: translateY(-13px);
   opacity: 1;
 }
 
@@ -222,7 +222,7 @@
 ──────────────────────────────── */
 .mp-reason-overlay {
   position: absolute;
-  bottom: -11px;
+  bottom: -13px;
   left: 0;
   right: 0;
   background: linear-gradient(135deg, rgba(246, 193, 204, 0.97), rgba(205, 180, 246, 0.97));

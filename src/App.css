@@ -628,7 +628,9 @@ body {
   gap: 48px;
   flex-wrap: wrap;
 }
-.footer-logo .logo { font-size: 22px; margin-bottom: 8px; }
+.footer-logo .logo { font-size: 22px; margin-bottom: 8px; cursor: default; pointer-events: none; }
+.footer-logo .logo:hover .logo-sg,
+.footer-logo .logo:hover .logo-chem { color: inherit; }
 .footer-logo p { font-size: 13px; color: #6a5a7a; }
 .footer-cols {
   display: flex;

@@ -7,6 +7,11 @@ import ForgotPassword from './pages/ForgotPassword.jsx'
 import Interview from './pages/Interview.jsx'
 import MatchProfiles from './pages/MatchProfiles.jsx'
 import Chat from './pages/Chat.jsx'
+import About from './pages/About.jsx'
+import ComingSoon from './pages/ComingSoon.jsx'
+import Team from './pages/Team.jsx'
+import FAQ from './pages/FAQ.jsx'
+import MyPage from './pages/MyPage.jsx'
 
 // eslint-disable-next-line react-refresh/only-export-components
 function MainPage() {
@@ -30,6 +35,7 @@ function MainPage() {
             <a href="#reviews">후기</a>
           </div>
           <div className="nav-btns">
+            <button className="btn-ghost" onClick={() => navigate('/mypage')}>마이페이지</button>
             <button className="btn-ghost" onClick={() => navigate('/login')}>로그인</button>
             <button className="btn-primary" onClick={() => navigate('/signup')}>회원가입</button>
           </div>
@@ -349,20 +355,20 @@ function MainPage() {
           <div className="footer-cols">
             <div className="footer-col">
               <strong>서비스</strong>
-              <a href="#">AI 인터뷰</a>
-              <a href="#">케미 매칭</a>
-              <a href="#">프리미엄</a>
+              <Link to="/interview">AI 인터뷰</Link>
+              <a href="/#features">케미 매칭</a>
+              <Link to="/coming-soon">프리미엄</Link>
             </div>
             <div className="footer-col">
               <strong>회사</strong>
-              <a href="#">소개</a>
-              <a href="#">블로그</a>
-              <a href="#">채용</a>
+              <Link to="/about">소개</Link>
+              <Link to="/coming-soon">블로그</Link>
+              <Link to="/team">채용</Link>
             </div>
             <div className="footer-col">
               <strong>지원</strong>
-              <a href="#">FAQ</a>
-              <a href="#">고객센터</a>
+              <Link to="/faq">FAQ</Link>
+              <Link to="/coming-soon">고객센터</Link>
               <a href="#">개인정보처리방침</a>
             </div>
           </div>
@@ -386,6 +392,11 @@ function App() {
       <Route path="/interview" element={<Interview />} />
       <Route path="/match-profiles" element={<MatchProfiles />} />
       <Route path="/chat" element={<Chat />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/coming-soon" element={<ComingSoon />} />
+      <Route path="/team" element={<Team />} />
+      <Route path="/faq" element={<FAQ />} />
+      <Route path="/mypage" element={<MyPage />} />
     </Routes>
   )
 }
