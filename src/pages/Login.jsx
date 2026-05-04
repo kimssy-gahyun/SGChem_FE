@@ -1,19 +1,27 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import './Login.css'
+import { api } from '../api'
 
 function Login() {
   const navigate = useNavigate()
   const [form, setForm] = useState({ email: '', password: '' })
+  const [error, setError] = useState('')
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // TODO: 실제 로그인 API 연결
-    console.log('로그인 시도:', form)
+    setError('')
+    try {
+      const data = await api.login(form.email, form.password)
+      localStorage.setItem('access_token', data.access_token)
+      navigate('/mypage')
+    } catch (err) {
+      setError(err.message)
+    }
   }
 
   return (
@@ -63,6 +71,7 @@ function Login() {
             <Link to="/forgot-password" className="forgot">비밀번호 찾기</Link>
           </div>
 
+          {error && <p style={{ color: 'red', fontSize: '0.85rem', marginBottom: '0.5rem' }}>{error}</p>}
           <button type="submit" className="login-btn">로그인</button>
         </form>
 

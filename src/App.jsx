@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Routes, Route, useNavigate, Link } from 'react-router-dom'
+import { Routes, Route, Navigate, useNavigate, Link } from 'react-router-dom'
 import './App.css'
 import Login from './pages/Login.jsx'
 import Signup from './pages/Signup.jsx'
@@ -17,6 +17,12 @@ import MyPage from './pages/MyPage.jsx'
 function MainPage() {
   const navigate = useNavigate()
   const [menuOpen, setMenuOpen] = useState(false)
+  const isLoggedIn = !!localStorage.getItem('access_token')
+
+  const handleLogout = () => {
+    localStorage.removeItem('access_token')
+    navigate('/')
+  }
 
   return (
     <div className="app">
@@ -35,9 +41,17 @@ function MainPage() {
             <a href="#reviews">후기</a>
           </div>
           <div className="nav-btns">
-            <button className="btn-ghost" onClick={() => navigate('/mypage')}>마이페이지</button>
-            <button className="btn-ghost" onClick={() => navigate('/login')}>로그인</button>
-            <button className="btn-primary" onClick={() => navigate('/signup')}>회원가입</button>
+            {isLoggedIn ? (
+              <>
+                <button className="btn-ghost" onClick={() => navigate('/mypage')}>마이페이지</button>
+                <button className="btn-ghost" onClick={handleLogout}>로그아웃</button>
+              </>
+            ) : (
+              <>
+                <button className="btn-ghost" onClick={() => navigate('/login')}>로그인</button>
+                <button className="btn-primary" onClick={() => navigate('/signup')}>회원가입</button>
+              </>
+            )}
           </div>
           <button
             className={`hamburger ${menuOpen ? 'open' : ''}`}
@@ -54,8 +68,17 @@ function MainPage() {
           <a href="#ai" onClick={() => setMenuOpen(false)}>AI 분석</a>
           <a href="#reviews" onClick={() => setMenuOpen(false)}>후기</a>
           <div className="mobile-menu-btns">
-            <button className="btn-ghost-dark w-full" onClick={() => { navigate('/login'); setMenuOpen(false) }}>로그인</button>
-            <button className="btn-primary w-full" onClick={() => { navigate('/signup'); setMenuOpen(false) }}>회원가입</button>
+            {isLoggedIn ? (
+              <>
+                <button className="btn-ghost-dark w-full" onClick={() => { navigate('/mypage'); setMenuOpen(false) }}>마이페이지</button>
+                <button className="btn-ghost-dark w-full" onClick={() => { handleLogout(); setMenuOpen(false) }}>로그아웃</button>
+              </>
+            ) : (
+              <>
+                <button className="btn-ghost-dark w-full" onClick={() => { navigate('/login'); setMenuOpen(false) }}>로그인</button>
+                <button className="btn-primary w-full" onClick={() => { navigate('/signup'); setMenuOpen(false) }}>회원가입</button>
+              </>
+            )}
           </div>
         </div>
       </nav>
@@ -382,6 +405,10 @@ function MainPage() {
   )
 }
 
+function PrivateRoute({ children }) {
+  return localStorage.getItem('access_token') ? children : <Navigate to="/login" replace />
+}
+
 function App() {
   return (
     <Routes>
@@ -396,7 +423,7 @@ function App() {
       <Route path="/coming-soon" element={<ComingSoon />} />
       <Route path="/team" element={<Team />} />
       <Route path="/faq" element={<FAQ />} />
-      <Route path="/mypage" element={<MyPage />} />
+      <Route path="/mypage" element={<PrivateRoute><MyPage /></PrivateRoute>} />
     </Routes>
   )
 }
